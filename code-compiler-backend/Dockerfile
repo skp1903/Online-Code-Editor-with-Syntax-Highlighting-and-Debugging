@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.11
 
-RUN yum install -y && yum install -y gcc-c++
+RUN yum update -y && yum install -y gcc-c++
 RUN yum install java-1.8.0-openjdk-devel -y
 
 # Copy requirements.txt
