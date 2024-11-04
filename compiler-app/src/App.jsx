@@ -7,24 +7,27 @@ function App() {
   const [language, setLanguage] = useState("python");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const defaultCode = {
     python: "# Write your Python code here\nprint(\"Hello, Python!\")",
     cpp: "// Write your C++ code here\n#include <iostream>\nint main() {\n  std::cout << \"Hello, C++!\" << std::endl;\n  return 0;\n}",
     java: "// Write your Java code here\npublic class Main {\n  public static void main(String[] args) {\n    System.out.println(\"Hello, Java!\");\n  }\n}",
   };
+
   useEffect(() => {
     setCode(defaultCode[language]);
   }, [language]);
 
   const submitCode = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         "https://3t3vy3oy01.execute-api.us-west-2.amazonaws.com/danish",
         {
           headers: { "Content-Type": "application/json" },
           method: "POST",
-          body: JSON.stringify({ code: code, language: language }),
+          body: JSON.stringify({ code, language }),
         }
       );
 
@@ -32,60 +35,70 @@ function App() {
         const data = await response.json();
         setOutput(data.body);
       } else {
-        console.log("API Response not OK:", response); // Log response if not OK
-        setOutput("Error: Unable to fetch output. Check your code and language selection.");
+        setOutput("Error: Unable to fetch output.");
       }
     } catch (error) {
-      setOutput(
-        "Error: Unable to fetch output. Please try again later." + error.message
-      );
+      setOutput("Error: " + error.message);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', height: '90vh' }}>
-        <div style={{ flex: 1, padding: '10px' }}>
-          <button 
-            style={{ background: language === "python" ? "black" : "white", color: language === "python" ? "white" : "black" }} 
-            onClick={() => setLanguage("python")}
-          >
-            Python
-          </button>
-          <button 
-            style={{ background: language === "cpp" ? "black" : "white", color: language === "cpp" ? "white" : "black" }} 
-            onClick={() => setLanguage("cpp")}
-          >
-            CPP
-          </button>
-          <button 
-            style={{ background: language === "java" ? "black" : "white", color: language === "java" ? "white" : "black" }} 
-            onClick={() => setLanguage("java")}
-          >
-            Java
-          </button>
+    <div className={isDarkMode ? "app dark" : "app light"}>
+      <div className="head">
+        <header>
+          <h1> &#9741; कोड karo</h1>
+        </header>
+      </div>
+      <br />
+      <br />
+
+      <div>
+        <button
+          className="mode-toggle"
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          style={{
+            background: isDarkMode ? '#444' : '#f0f0f0',
+            color: isDarkMode ? '#f0f0f0' : '#000',
+          }}
+        >
+          {isDarkMode ? "🌙" : "☀️"}
+        </button>
+
+      </div>
+      <div className="container">
+        <div className="editor-container">
+          <div className="editor-buttons">
+            {Object.keys(defaultCode).map((lang) => (
+              <button
+                key={lang}
+                className={language === lang ? "selected" : ""}
+                onClick={() => setLanguage(lang)}
+              >
+                {lang.toUpperCase()}
+              </button>
+            ))}
+          </div>
           <Editor
             value={code}
             onChange={(e) => setCode(e)}
-            theme='vs-dark'
-            height="85vh" // Adjust the height for the editor
-            defaultLanguage={language} // Use the current language
-            defaultValue="// Write your code here"
+            theme={isDarkMode ? "vs-dark" : "light"}
+            height="70vh"
+            language={language}
+            options={{ fontSize: 16, smoothScrolling: true }}
           />
-          <button onClick={submitCode} style={{ marginTop: '10px' }}>SUBMIT</button>
+          <button className="submit-btn" onClick={submitCode}>
+            {loading ? "Running..." : "RUN"}
+          </button>
         </div>
 
-        <div style={{ flex: 1, padding: '10px', background: '#333', color: '#fff', overflowY: 'auto' }}>
-          <h3>Submitted Code:</h3>
-          <pre>{code}</pre>
-
+        <div className="output-container">
           <h3>Output:</h3>
-          <pre>{output}</pre>
+          {loading ? <div className="loader"></div> : <pre>{output}</pre>}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
