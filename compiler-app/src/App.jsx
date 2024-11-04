@@ -18,8 +18,6 @@ function App() {
   }, [language]);
 
   const submitCode = async () => {
-    setLoading(true);
-
     try {
       const response = await fetch(
         "https://3t3vy3oy01.execute-api.us-west-2.amazonaws.com/danish",
@@ -34,9 +32,8 @@ function App() {
         const data = await response.json();
         setOutput(data.body);
       } else {
-        setOutput(
-          "Error: Unable to fetch output. Check your code and language selection."
-        );
+        console.log("API Response not OK:", response); // Log response if not OK
+        setOutput("Error: Unable to fetch output. Check your code and language selection.");
       }
     } catch (error) {
       setOutput(
@@ -48,37 +45,47 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="editor-container">
-        <div className="editor-buttons">
-          {Object.keys(defaultCode).map((lang) => (
-            <button
-              key={lang}
-              className={language === lang ? "selected" : ""}
-              onClick={() => setLanguage(lang)}
-            >
-              {lang.toUpperCase()}
-            </button>
-          ))}
+    <>
+      <div style={{ display: 'flex', justifyContent: 'space-between', height: '90vh' }}>
+        <div style={{ flex: 1, padding: '10px' }}>
+          <button 
+            style={{ background: language === "python" ? "black" : "white", color: language === "python" ? "white" : "black" }} 
+            onClick={() => setLanguage("python")}
+          >
+            Python
+          </button>
+          <button 
+            style={{ background: language === "cpp" ? "black" : "white", color: language === "cpp" ? "white" : "black" }} 
+            onClick={() => setLanguage("cpp")}
+          >
+            CPP
+          </button>
+          <button 
+            style={{ background: language === "java" ? "black" : "white", color: language === "java" ? "white" : "black" }} 
+            onClick={() => setLanguage("java")}
+          >
+            Java
+          </button>
+          <Editor
+            value={code}
+            onChange={(e) => setCode(e)}
+            theme='vs-dark'
+            height="85vh" // Adjust the height for the editor
+            defaultLanguage={language} // Use the current language
+            defaultValue="// Write your code here"
+          />
+          <button onClick={submitCode} style={{ marginTop: '10px' }}>SUBMIT</button>
         </div>
-        <Editor
-          value={code}
-          onChange={(e) => setCode(e)}
-          theme="vs-dark"
-          height="70vh"
-          language={language}
-          options={{ fontSize: 16, smoothScrolling: true }}
-        />
-        <button className="submit-btn" onClick={submitCode}>
-          {loading ? "Running..." : "RUN"}
-        </button>
-      </div>
 
-      <div className="output-container">
-        <h3>Output:</h3>
-        {loading ? <div className="loader"></div> : <pre>{output}</pre>}
+        <div style={{ flex: 1, padding: '10px', background: '#333', color: '#fff', overflowY: 'auto' }}>
+          <h3>Submitted Code:</h3>
+          <pre>{code}</pre>
+
+          <h3>Output:</h3>
+          <pre>{output}</pre>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
