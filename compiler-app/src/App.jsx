@@ -48,27 +48,25 @@ function App() {
     <div className={isDarkMode ? "app dark" : "app light"}>
       <div className="head">
         <header>
-          <h1> &#9741; कोड karo</h1>
+          <h1> &#9741; <span style={{color:'red'}}>कोड</span> karo</h1>
         </header>
       </div>
       <br />
       <br />
-
-      <div>
-        <button
-          className="mode-toggle"
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          style={{
-            background: isDarkMode ? '#444' : '#f0f0f0',
-            color: isDarkMode ? '#f0f0f0' : '#000',
-          }}
-        >
-          {isDarkMode ? "🌙" : "☀️"}
-        </button>
-
-      </div>
       <div className="container">
         <div className="editor-container">
+          <div>
+          <button
+            className="mode-toggle"
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            style={{
+              background: isDarkMode ? '#444' : '#f0f0f0',
+              color: isDarkMode ? '#f0f0f0' : '#000',
+            }}
+          >
+            {isDarkMode ? "🌙" : "☀️"}
+          </button>
+          </div>
           <div className="editor-buttons">
             {Object.keys(defaultCode).map((lang) => (
               <button

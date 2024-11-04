@@ -16,16 +16,17 @@ body {
   padding: 20px;
 }
 
-.head{
+.head {
   justify-content: center;
   display: flex;
+  text-align: center;
 }
 
 /* Button Styles */
 button {
   cursor: pointer;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 16px;
   margin: 5px;
   font-size: 1rem;
   border-radius: 8px;
@@ -63,11 +64,12 @@ button:not(.selected):hover {
 /* Main Layout Styles */
 .container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding: 20px;
-  max-width: 1200px; /* Adjusted for better responsiveness */
+  max-width: 1200px;
+  min-width: 1200px;
   width: 100%;
-  height: 700px;
   background: rgba(25, 25, 25, 0.95);
   border-radius: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
@@ -80,9 +82,9 @@ button:not(.selected):hover {
   flex-direction: column;
   background-color: #1f1f1f;
   padding: 20px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  min-width: 600px; /* Adjusted for better layout */
 }
 
 .editor-container .submit-btn {
@@ -94,6 +96,7 @@ button:not(.selected):hover {
   font-size: 1rem;
   align-self: flex-start;
   transition: background 0.3s ease;
+  width: 100%;
 }
 
 .editor-container .submit-btn:hover {
@@ -112,26 +115,22 @@ button:not(.selected):hover {
   gap: 10px;
   overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  min-width: 400px;
 }
 
-/* Headers */
 .output-container h3 {
   color: #ff4c4c;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-bottom: 1px solid #444;
   padding-bottom: 5px;
 }
 
-/* Code Display */
 .output-container pre {
   background-color: #1b1b1b;
   padding: 15px;
   border-radius: 8px;
   overflow-x: auto;
   max-height: 50vh;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #f8f8f2;
   margin: 0;
 }
@@ -139,9 +138,10 @@ button:not(.selected):hover {
 /* Editor Buttons */
 .editor-buttons {
   display: flex;
-  gap: 10px; /* Increased spacing for better visual separation */
+  gap: 10px;
   margin-bottom: 15px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Loader Animation */
@@ -158,4 +158,46 @@ button:not(.selected):hover {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    height: 80vh;
+  }
+
+  .editor-container, .output-container {
+    min-width: 48%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    gap: 15px;
+  }
+
+  .editor-container, .output-container {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .output-container h3 {
+    font-size: 0.9rem;
+  }
 }
