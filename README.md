@@ -60,5 +60,5 @@ This project is an **online code editor and compiler** inspired by [Programiz](h
   ```
 
 ### Screen Shot 
-![Home Page Screenshot](compiler-app\src\assets\IDE.png)
+![Home Page Screenshot](assets/IDE.png)
 
