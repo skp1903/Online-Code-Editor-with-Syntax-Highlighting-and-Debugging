@@ -1,0 +1,126 @@
+/* App.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
+  }
+  
+  /* Button Styles */
+  button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  button.selected {
+    background-color: #00aaff;
+    color: #ffffff;
+  }
+  
+  button:not(.selected) {
+    background-color: #444;
+    color: #bbb;
+  }
+  
+  button:not(.selected):hover {
+    background-color: #555;
+  }
+  
+  /* Main Layout Styles */
+  .container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    height: 90vh;
+    background-color: #1e1e2f;
+  }
+  
+  /* Editor Container */
+  .editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d3a;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .editor-container .submit-btn {
+    background-color: #007acc;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 1rem;
+    align-self: flex-start;
+  }
+  
+  .editor-container .submit-btn:hover {
+    background-color: #005a8d;
+  }
+  
+  /* Output Container */
+  .output-container {
+    flex: 1;
+    background-color: #333;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+  }
+  
+  /* Headers */
+  .output-container h3 {
+    color: #00aaff;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+  }
+  
+  /* Code Display */
+  .output-container pre {
+    background-color: #1e1e2f;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    max-height: 50vh;
+    font-size: 0.9rem;
+    color: #ddd;
+    margin: 0;
+  }
+  
+  /* Improved Layout for Editor Buttons */
+  .editor-buttons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  
