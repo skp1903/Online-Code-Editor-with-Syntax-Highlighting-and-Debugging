@@ -1,64 +1,59 @@
-# Online IDE
+Online Code Editor with Syntax Highlighting and Debugging
 
-This project is an **online code editor and compiler** inspired by [Programiz](https://www.programiz.com/), built using **Vite** and **React** for the frontend. The backend is powered by **AWS Lambda**, providing a serverless architecture for compiling and executing code snippets.
+This project is an online code editor and compiler inspired by Programiz. It offers syntax highlighting, debugging tools, and support for multiple programming languages.
+Features
 
-## Features
+    Code Execution: Supports Python, Java, C++.
+    Syntax Highlighting & Debugging: Improves code readability and debugging experience.
+    Error Handling: Provides detailed error feedback.
+    Responsive Design: Optimized for all devices.
+    Cloud Backend: Uses AWS Lambda for scalable code execution.
 
-- **Code Compilation**: Supports multiple programming languages (e.g., Python, Java, C++).
-- **Syntax Highlighting**: Enhanced code readability with syntax highlighting.
-- **User Authentication**: Optional user accounts for saving and managing code snippets.
-- **AWS Lambda Integration**: Serverless backend for efficient and scalable code execution.
-- **Responsive Design**: Works well across various screen sizes.
-- **Error Handling**: Friendly messages and guidance when something goes wrong during execution.
+Tech Stack
 
-## Tech Stack
+    Frontend: Vite, React, Monaco Editor
+    Backend: AWS Lambda, API Gateway, Docker
 
-### Frontend
-- **Vite** - Fast and optimized development environment.
-- **React** - Component-based UI development.
-- **CodeMirror/Monaco Editor** (optional) - For code editing and syntax highlighting.
+Setup Instructions
+Frontend Setup
 
-### Backend
-- **AWS Lambda** - Serverless architecture for executing code.
-- **API Gateway** - Manages RESTful API requests between the frontend and backend.
-- **Docker** - Containerizes backend code to deploy on AWS Lambda.
+    Clone the repository:
 
-### Additional Tools
-- **AWS IAM** - Manages permissions for Lambda functions.
-- **GitHub Pages** - Hosts the frontend application for easy access.
+git clone https://github.com/yourusername/online-code-editor.git
+cd "Online Code Editor with Syntax Highlighting and Debugging"
 
-## Installation and Setup
+Install dependencies:
 
-### Prerequisites
-- **Node.js** and **npm** installed
-- **AWS CLI** configured with permissions to deploy to Lambda
-- **Docker** installed for containerizing backend code
+npm install
 
-### Frontend Setup
+Start the development server:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/online-ide.git
-   cd online-ide
-   ```
-2. Install frontend dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open http://localhost: in your browser to view the application.
-   ```bash
-   
-### Backend Setup
+cd frontend
+PS C:\Users\lenovo t1in\Downloads\Online Code Editor with Syntax Highlighting and Debugging\frontend> npm run dev
 
--API Gateway for backend logic for compilation :
-  ```bash
-    https://3t3vy3oy01.execute-api.us-west-2.amazonaws.com/danish
-  ```
+Server output:
 
-### Screen Shot 
-![IDE Interface](compiler-app/src/assets/IDE.png)
+    > compiler-app@0.0.0 dev  
+    > vite  
+
+    Re-optimizing dependencies because vite config has changed  
+
+      VITE v5.4.11  ready in 346 ms  
+
+      ➜  Local:   http://localhost:5173/  
+      ➜  Network: use --host to expose  
+      ➜  press h + enter to show help  
+
+    Visit http://localhost:5173/ in your browser.
+
+Backend Setup
+
+Use the provided API Gateway endpoint for code compilation:
+
+https://3t3vy3oy01.execute-api.us-west-2.amazonaws.com/danish  
+
+Screenshot
+
+![image](https://github.com/user-attachments/assets/41baf720-b83e-4fcc-b009-9c26095c93b3)
+
 
