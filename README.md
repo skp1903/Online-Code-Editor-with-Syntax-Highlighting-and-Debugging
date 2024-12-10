@@ -29,7 +29,7 @@ npm install
 Start the development server:
 
 cd frontend
-PS C:\Users\lenovo t1in\Downloads\Online Code Editor with Syntax Highlighting and Debugging\frontend> npm run dev
+PS C:\Users\System\Downloads\Online Code Editor with Syntax Highlighting and Debugging\frontend> npm run dev
 
 Server output:
 
