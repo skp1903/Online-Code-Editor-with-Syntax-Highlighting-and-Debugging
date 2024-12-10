@@ -46,11 +46,7 @@ Server output:
 
     Visit http://localhost:5173/ in your browser.
 
-Backend Setup
 
-Use the provided API Gateway endpoint for code compilation:
-
-https://3t3vy3oy01.execute-api.us-west-2.amazonaws.com/danish  
 
 Screenshot
 
