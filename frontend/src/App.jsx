@@ -1,3 +1,4 @@
+// app.jsx
 import { useEffect, useState } from "react";
 import "./App.css";
 import Editor from "@monaco-editor/react";
@@ -67,7 +68,7 @@ function App() {
               {isDarkMode ? "DaRk" : "LiGhT"}
             </button>
           </div>
-          <div className="editor-buttons">
+          <div className="editor-buttons" style={{ flexDirection: 'column' }}>
             {Object.keys(defaultCode).map((lang) => (
               <button
                 key={lang}
