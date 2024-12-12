@@ -50,7 +50,8 @@ Server output:
 
 Screenshot
 
-![image]![image](https://github.com/user-attachments/assets/0c2fccab-66bf-484b-a613-c96f4cd856e4)
+![image]!![image](https://github.com/user-attachments/assets/937218be-9a24-4164-8e8c-a368e7ce99ab)
+
 
 
 
