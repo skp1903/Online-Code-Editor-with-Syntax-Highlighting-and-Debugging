@@ -64,6 +64,7 @@ button:not(.selected):hover {
 
 button.submit-btn {
   background-color: blue; /* Blue color for the Run button */
+  font-style: italic; /* Cursive font */
 }
 
 button.submit-btn:hover {
@@ -73,7 +74,7 @@ button.submit-btn:hover {
 /* Main Layout Styles */
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Changed to vertical layout */
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
@@ -172,12 +173,12 @@ button.submit-btn:hover {
 /* Responsive Design */
 @media (min-width: 1024px) {
   .container {
-    flex-direction: row;
-    height: 80vh;
+    flex-direction: column; /* Keeps the layout vertical */
+    height: auto; /* Ensures proper spacing */
   }
 
   .editor-container, .output-container {
-    min-width: 48%;
+    min-width: 100%;
   }
 }
 
@@ -210,3 +211,4 @@ button.submit-btn:hover {
     font-size: 0.9rem;
   }
 }
+
