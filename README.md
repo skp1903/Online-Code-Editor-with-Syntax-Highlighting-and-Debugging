@@ -50,6 +50,10 @@ Server output:
 
 Screenshot
 
+https://github.com/user-attachments/assets/c5cfefe1-bece-4921-8dee-cc8b412fa9b8
+
+
+
 ![image]!![image](https://github.com/user-attachments/assets/937218be-9a24-4164-8e8c-a368e7ce99ab)
 
 
